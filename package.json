@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/SGoerzen/node-ffmpeg-installer#readme",
   "dependencies": {
-    "downinst": "https://github.com/SGoerzen/node-downinst.git"
+    "downinst": "https://github.com/SGoerzen/node-downinst.git",
+    "downloads-folder": "^1.0.1",
+    "extract-zip": "^1.6.7"
   }
 }
