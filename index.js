@@ -1,6 +1,6 @@
 const { exec, execSync } = require('child_process');
 const downloadsFolder = require('downloads-folder');
-const { download, install } = require('downinst');
+const { download } = require('downinst');
 const path = require('path');
 const fs = require('fs');
 const extract = require('extract-zip');
@@ -37,9 +37,14 @@ function extractFFMPEG(zipFile, target, onFinish) {
 }
 
 function installFFMPEG(onFinish, onDownload, installPlace) { 
-    
+    const outFile = path.join(downloadsFolder(), "ffmpeg.zip");
+
+    // delete to redownload it
+    if (fs.existsSync(outFile)) {
+        fs.unlink(outFile);
+    }
+
     if (process.platform === "win32") {
-        const outFile = path.join(downloadsFolder(), "ffmpeg.zip");
         // TODO auto assign version
         download({
             type: "http",
